@@ -16,6 +16,63 @@
   </head>
 
   <body>
+  <nav>
+      <div>
+        <a href="/">
+          <i class="fab fa-firstdraft fa-fw"></i>
+
+          All Teachers
+        </a>
+      </div>
+
+      <div>
+        <a href="/">
+          <i class="fas fa-users"></i>
+
+          All Students
+        </a>
+      </div>
+
+      <div>
+        <a href="/">
+          <i class="fas fa-users"></i>
+
+          All Lessons
+        </a>
+      </div>
+
+      <% if @current_teacher == nil %>
+        <div>
+          <a href="/teacher_sign_up">
+            Teacher Sign Up
+          </a>
+        </div>
+
+        <div>
+          <a href="/teacher_sign_in">
+            Teacher Sign In
+          </a>
+        </div>
+
+      <%else%>
+        <div>
+          <a href="/users/<%= @current_teacher.name %>">
+          <%= @current_teacher.name%>
+          </a>
+        </div>
+        
+        <div>
+            <a href="/teacher_sign_out">
+              Teacher Sign Out
+            </a>
+          </div>
+      <%end%>
+
+    </nav>
     <%= yield %>
   </body>
 </html>
+
+
+    
+
