@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new
-    @lesson.teacher_id = @current_teacher.id
+    @lesson.teacher_id = session[:teacher_id]
     @lesson.student_id = params.fetch("student_id_from_query")
     @lesson.feedback = params.fetch("feedback_from_query")
 

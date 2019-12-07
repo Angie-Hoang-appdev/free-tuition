@@ -13,4 +13,13 @@
 class Lesson < ApplicationRecord
   belongs_to :teacher
   belongs_to :student
+  
+  def teacher
+    return Teacher.where({:id => self.teacher_id}).at(0).name
+  end
+
+  def student
+    return Student.where({:id => self.student_id}).at(0).name
+  end
+
 end
