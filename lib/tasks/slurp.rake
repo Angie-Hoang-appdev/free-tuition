@@ -11,7 +11,7 @@ namespace :slurp do
       t.email = row["email"]
       t.grade = row["grade"]
       t.state = row["state"]
-      t.name = row["name"]]
+      t.name = row["name"]
       t.save
       puts "#{t.name} saved"
     end

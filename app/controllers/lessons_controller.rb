@@ -1,7 +1,8 @@
 class LessonsController < ApplicationController
   def index
     @lessons = Lesson.all.order({ :created_at => :desc })
-
+    @students = Student.all
+    @teachers = Teacher.all
     render({ :template => "lessons/index.html.erb" })
   end
 
