@@ -1,34 +1,24 @@
 <h1><%= @teacher.name %></h1>
 
 <dl>
-  <dt>Email</dt>
-  <dd>
-    <p><%= @teacher.email %></p>
-  </dd>
+  <dt>Email: <%= @teacher.email %></dt>
 
-  <dt>Expertise</dt>
-  <dd>
-    <p><%= @teacher.expertise %></p>
-  </dd>
+  <dt>Expertise: <%= @teacher.expertise %>  </dt>
 
-  <dt>Schedule</dt>
-  <dd>
-    <p><%= @teacher.schedule %></p>
-  </dd>
+  <dt>Schedule: <%= @teacher.schedule %> </dt>
 
-  <dt>Average Rating</dt>
-    <p><%= @teacher.average_rating %></p>
-  <dd>
+  <dt>Average Rating: <%= @teacher.average_rating %> <dt>
 </dl>
 
 <hr>
+<h2> <%= @teacher.name %>'s Lessons </h2>
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table" border="1">
    
       <tr>
         <th>
-          ID
+          Lesson Number
         </th>
 
         <th>

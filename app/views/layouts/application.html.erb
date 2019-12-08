@@ -92,9 +92,17 @@
             <a href="/teacher_sign_out">
               Teacher Sign Out
             </a>
-          </div>
+        </div>
       <%end%>
+      <p>
+      <% if alert.present? %>
+      <p style="border: thin red solid;"> <%= alert%></p>
+      <% end %>
 
+      <% if notice.present? %>
+      <p style="border: thin green solid;"> <%= notice%></p>
+      <% end %>
+      </p>
     </nav>
     <%= yield %>
   </body>
