@@ -19,9 +19,9 @@ class Teacher < ApplicationRecord
   has_many :tuitions, :class_name => "Lesson", :dependent => :destroy
 
   def average_rating
-    total= Lesson.where({:teacher_id => self.id}).pluck(:rating).sum
-    count= Lesson.where({:teacher_id => self.id}).pluck(:rating).count
-    return total/count
+    total= Lesson.where({:teacher_id => self.id}).pluck(:rating).sum.to_f
+    count= Lesson.where({:teacher_id => self.id}).pluck(:rating).count.to_f
+    return (total/count).round(2)
   end
 end
 

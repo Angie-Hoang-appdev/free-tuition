@@ -23,14 +23,16 @@
         Teacher
       </dt>
       <dd>
-        <%= @lesson.teacher_id %>
+        <a href="/teachers/<%= @lesson.teacher_id %>">
+        <%= @lesson.teacher %>
       </dd>
 
       <dt>
+        <a href="/students/<%= @lesson.student_id %>">
         Student
       </dt>
       <dd>
-        <%= @lesson.student_id %>
+        <%= @lesson.student %>
       </dd>
 
       <dt>
@@ -38,6 +40,13 @@
       </dt>
       <dd>
         <%= @lesson.feedback %>
+      </dd>
+
+      <dt>
+        Rating
+      </dt>
+      <dd>
+        <%= @lesson.rating %>
       </dd>
 
       <dt>
