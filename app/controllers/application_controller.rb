@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action(:load_current_student)
+  before_action(:load_current_teacher)
+  
   before_action(:force_student_sign_in)
   
   def load_current_student
@@ -8,12 +10,12 @@ class ApplicationController < ActionController::Base
   end
   
   def force_student_sign_in
-    if @current_student == nil
+    if @current_student == nil && @current_teacher == nil 
       redirect_to("/student_sign_in", { :notice => "You have to sign in first." })
     end
   end
 
-  before_action(:load_current_teacher)
+  
   before_action(:force_teacher_sign_in)
   
   def load_current_teacher
@@ -22,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
   
   def force_teacher_sign_in
-    if @current_teacher == nil
+    if @current_student == nil && @current_teacher == nil 
       redirect_to("/teacher_sign_in", { :notice => "You have to sign in first." })
     end
   end

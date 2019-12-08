@@ -30,7 +30,7 @@ class TeacherSessionsController < ApplicationController
   def remove_cookies
     reset_session
 
-    redirect_to("/", { :notice => "Signed out successfully." })
+    redirect_to("/teacher_sign_in", { :notice => "Signed out successfully." })
   end
  
 end

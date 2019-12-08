@@ -68,6 +68,33 @@
           </div>
       <%end%>
 
+      <% if @current_student == nil %>
+        <div>
+          <a href="/student_sign_up">
+            Student Sign Up
+          </a>
+        </div>
+
+        <div>
+          <a href="/student_sign_in">
+            Student Sign In
+          </a>
+        </div>
+
+      <%else%>
+        <div>
+          <a href="/users/<%= @current_student.name %>">
+          <%= @current_student.name%>
+          </a>
+        </div>
+        
+        <div>
+            <a href="/student_sign_out">
+              Student Sign Out
+            </a>
+          </div>
+      <%end%>
+
     </nav>
     <%= yield %>
   </body>
