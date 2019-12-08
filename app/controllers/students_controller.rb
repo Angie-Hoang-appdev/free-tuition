@@ -7,6 +7,14 @@ class StudentsController < ApplicationController
     render({ :template => "students/all_students.html.erb"})
   end
 
+  def show
+    
+    student_id = params.fetch("the_student_id")
+    @student = Student.where({:id => student_id }).first
+    @lessons_of_student = Lesson.where({:student_id => student_id })
+    render({:template => "students/details.html.erb"})
+  end
+
   def new_registration_form
     render({ :template => "student_sessions/sign_up.html.erb" })
   end

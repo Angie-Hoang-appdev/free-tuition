@@ -17,4 +17,11 @@ class Teacher < ApplicationRecord
   validates :email, :presence => true
   has_secure_password
   has_many :tuitions, :class_name => "Lesson", :dependent => :destroy
+
+  def average_rating
+    total= Lesson.where({:teacher_id => self.id}).pluck(:rating).sum
+    count= Lesson.where({:teacher_id => self.id}).pluck(:rating).count
+    return total/count
+  end
 end
+

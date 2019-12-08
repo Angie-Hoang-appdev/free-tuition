@@ -1,0 +1,102 @@
+<h1><%= @teacher.name %></h1>
+
+<dl>
+  <dt>Email</dt>
+  <dd>
+    <p><%= @teacher.email %></p>
+  </dd>
+
+  <dt>Expertise</dt>
+  <dd>
+    <p><%= @teacher.expertise %></p>
+  </dd>
+
+  <dt>Schedule</dt>
+  <dd>
+    <p><%= @teacher.schedule %></p>
+  </dd>
+
+  <dt>Average Rating</dt>
+    <p><%= @teacher.average_rating %></p>
+  <dd>
+</dl>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table" border="1">
+   
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Teacher
+        </th>
+
+        <th>
+          Student
+        </th>
+
+        <th>
+          Feedback
+        </th>
+
+        <th>
+          Rating
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @lessons_of_teacher.each do |lesson| %>
+      <tr>
+        <td>
+          <%= lesson.id %>
+        </td>
+
+        <td>
+          <%= lesson.teacher %>
+        </td>
+
+        <td>
+          <%= lesson.student %>
+        </td>
+
+        <td>
+          <%= lesson.feedback %>
+        </td>
+        
+        <td>
+          <%= lesson.rating %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(lesson.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(lesson.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/lessons/<%= lesson.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

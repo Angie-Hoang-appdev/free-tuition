@@ -56,7 +56,7 @@
 
       <%else%>
         <div>
-          <a href="/users/<%= @current_teacher.name %>">
+          <a href="/teachers/<%= @current_teacher.id %>">
           <%= @current_teacher.name%>
           </a>
         </div>
@@ -83,7 +83,7 @@
 
       <%else%>
         <div>
-          <a href="/users/<%= @current_student.name %>">
+          <a href="/students/<%= @current_student.id %>">
           <%= @current_student.name%>
           </a>
         </div>

@@ -7,6 +7,14 @@ class TeachersController < ApplicationController
     @teachers = Teacher.all
     render({ :template => "teachers/all_teachers.html.erb"})
   end
+
+  def show
+    teacher_id = params.fetch("the_teacher_id")
+    @teacher = Teacher.where({:id => teacher_id }).first
+    @lessons_of_teacher = Lesson.where({:teacher_id => teacher_id })
+    render({:template => "teachers/teacher_details.html.erb"})
+  end
+
   def new_registration_form
     render({ :template => "teacher_sessions/sign_up.html.erb" })
   end

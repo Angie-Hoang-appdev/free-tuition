@@ -29,6 +29,7 @@ class LessonsController < ApplicationController
     end
 
     @lesson.feedback = params.fetch("feedback_from_query")
+    @lesson.rating = params.fetch("rating_from_query")
 
     if @lesson.valid?
       @lesson.save

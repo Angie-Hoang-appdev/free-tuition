@@ -41,7 +41,7 @@
             <% end %>
           </select>
       </div>
-      
+
       <%end%>
 
       <div class="form-group">
@@ -50,6 +50,19 @@
         </label>
 
         <input type="text" id="feedback_box" name="feedback_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="rating_box">
+          Rating
+        </label>
+          <select id="rating_box" name="rating_from_query">              
+              <option value="1"><%=1 %></option>
+              <option value="2"><%=2 %></option>
+              <option value="3"><%=3 %></option>
+              <option value="4"><%=4 %></option>
+              <option value="5"><%=5 %></option>
+          </select>
       </div>
 
       <button class="btn btn-block btn-outline-secondary">
@@ -82,6 +95,10 @@
         </th>
 
         <th>
+          Rating
+        </th>
+
+        <th>
           Created at
         </th>
 
@@ -100,6 +117,7 @@
         </td>
 
         <td>
+          <a href="/teachers/<%= @current_teacher.id %>">
           <%= lesson.teacher %>
         </td>
 
@@ -109,6 +127,10 @@
 
         <td>
           <%= lesson.feedback %>
+        </td>
+        
+        <td>
+          <%= lesson.rating %>
         </td>
 
         <td>

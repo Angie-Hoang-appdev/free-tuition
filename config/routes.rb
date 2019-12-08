@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   #------------------------------
   # Routes for reading all students
   match("/students", { :controller => "students", :action => "index", :via => "get"})
+  match("/students/:the_student_id", { :controller => "students", :action => "show", :via => "get"})
+
   # Routes for signing up
 
   match("/student_sign_up", { :controller => "students", :action => "new_registration_form", :via => "get"})
@@ -54,7 +56,7 @@ Rails.application.routes.draw do
 
   # Routes for reading all teachers
   match("/teachers", { :controller => "teachers", :action => "index", :via => "get"})
-
+  match("/teachers/:the_teacher_id", { :controller => "teachers", :action => "show", :via => "get"})
   # Routes for signing up
 
   match("/teacher_sign_up", { :controller => "teachers", :action => "new_registration_form", :via => "get"})
