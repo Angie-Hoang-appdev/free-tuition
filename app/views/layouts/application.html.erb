@@ -42,17 +42,44 @@
       </div>
 
       <% if @current_teacher == nil %>
-        <div>
-          <a href="/teacher_sign_up">
-            Teacher Sign Up
-          </a>
-        </div>
+        <% if @current_student == nil %>
+          <div>
+            <a href="/teacher_sign_up">
+              Teacher Sign Up
+            </a>
+          </div>
 
-        <div>
-          <a href="/teacher_sign_in">
-            Teacher Sign In
-          </a>
-        </div>
+          <div>
+            <a href="/teacher_sign_in">
+              Teacher Sign In
+            </a>
+          </div>
+
+          <div>
+            <a href="/student_sign_up">
+              Student Sign Up
+            </a>
+          </div>
+
+          <div>
+            <a href="/student_sign_in">
+              Student Sign In
+            </a>
+          </div>
+          
+        <%else%>
+          <div>
+            <a href="/students/<%= @current_student.id %>">
+            <%= @current_student.name%>
+            </a>
+          </div>
+
+          <div>
+            <a href="/student_sign_out">
+              Student Sign Out
+            </a>
+          </div> 
+        <%end%> 
 
       <%else%>
         <div>
@@ -64,33 +91,6 @@
         <div>
             <a href="/teacher_sign_out">
               Teacher Sign Out
-            </a>
-          </div>
-      <%end%>
-
-      <% if @current_student == nil %>
-        <div>
-          <a href="/student_sign_up">
-            Student Sign Up
-          </a>
-        </div>
-
-        <div>
-          <a href="/student_sign_in">
-            Student Sign In
-          </a>
-        </div>
-
-      <%else%>
-        <div>
-          <a href="/students/<%= @current_student.id %>">
-          <%= @current_student.name%>
-          </a>
-        </div>
-        
-        <div>
-            <a href="/student_sign_out">
-              Student Sign Out
             </a>
           </div>
       <%end%>
