@@ -2,6 +2,11 @@ class StudentsController < ApplicationController
   skip_before_action(:force_student_sign_in, { :only => [:new_registration_form, :create] })
   skip_before_action(:force_teacher_sign_in)
 
+  def index
+    @students = Student.all
+    render({ :template => "students/all_students.html.erb"})
+  end
+
   def new_registration_form
     render({ :template => "student_sessions/sign_up.html.erb" })
   end

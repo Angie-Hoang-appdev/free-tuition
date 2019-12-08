@@ -16,14 +16,22 @@
 
     <form action="/insert_lesson" method="post">
       <% if @current_student == nil %>
-
-
       <div class="form-group">
         <label for="student_id_box">
           Student
         </label>
 
         <input type="text" id="student_id_box" name="student_id_from_query" class="form-control">
+      </div>
+      <%end%>
+
+      <% if @current_teacher == nil %>
+      <div class="form-group">
+        <label for="teacher_id_box">
+          Teacher
+        </label>
+
+        <input type="text" id="teacher_id_box" name="teacher_id_from_query" class="form-control">
       </div>
       <%end%>
 
@@ -87,7 +95,7 @@
         </td>
 
         <td>
-          <%= lesson.student_id %>
+          <%= lesson.student %>
         </td>
 
         <td>

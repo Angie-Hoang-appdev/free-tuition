@@ -3,6 +3,10 @@ class TeachersController < ApplicationController
 
   skip_before_action(:force_student_sign_in)
 
+  def index
+    @teachers = Teacher.all
+    render({ :template => "teachers/all_teachers.html.erb"})
+  end
   def new_registration_form
     render({ :template => "teacher_sessions/sign_up.html.erb" })
   end

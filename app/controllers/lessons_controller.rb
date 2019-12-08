@@ -14,8 +14,19 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new
-    @lesson.teacher_id = session[:teacher_id]
-    @lesson.student_id = params.fetch("student_id_from_query")
+    
+    if session[:teacher_id] !=nil 
+      @lesson.teacher_id = session[:teacher_id]
+      else
+      @lesson.teacher_id = params.fetch("teacher_id_from_query")
+    end 
+
+    if session[:student_id] != nil
+      @lesson.student_id = session[:student_id]
+      else
+      @lesson.student_id = params.fetch("student_id_from_query")
+    end
+
     @lesson.feedback = params.fetch("feedback_from_query")
 
     if @lesson.valid?
