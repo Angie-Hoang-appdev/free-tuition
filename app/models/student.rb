@@ -14,6 +14,7 @@
 class Student < ApplicationRecord
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :email, :presence => true
+  validates :name, :presence => true
   has_secure_password
   has_many :tuitions, :class_name => "Lesson", :dependent => :destroy
 end

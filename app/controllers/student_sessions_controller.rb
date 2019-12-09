@@ -19,7 +19,7 @@ class StudentSessionsController < ApplicationController
       else
         session.store(:student_id, student.id)
       
-        redirect_to("/", { :notice => "Signed in successfully." })
+        redirect_to("/students/#{student.id}", { :notice => "Signed in successfully." })
       end
     else
       redirect_to("/student_sign_in", { :alert => "There's no student account with that email address." })

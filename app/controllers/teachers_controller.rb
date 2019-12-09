@@ -4,7 +4,8 @@ class TeachersController < ApplicationController
   skip_before_action(:force_student_sign_in)
 
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.all.order({ :average_rating => :desc })
+
     render({ :template => "teachers/all_teachers.html.erb"})
   end
 
@@ -25,7 +26,9 @@ class TeachersController < ApplicationController
     @teacher.password = params.fetch("password_from_query")
     @teacher.password_confirmation = params.fetch("password_confirmation_from_query")
     @teacher.name = params.fetch("name_from_query")
-    @teacher.schedule = params.fetch("schedule_from_query")
+    schedule_from_query = params.fetch("schedule_from_query1","") +" "+ params.fetch("schedule_from_query2","") +" "+ params.fetch("schedule_from_query3","") +" "+ params.fetch("schedule_from_query4","") +" "+ params.fetch("schedule_from_query5","")
+    @teacher.schedule = schedule_from_query
+    #@teacher.schedule = params.fetch("schedule_from_query")
     @teacher.expertise = params.fetch("expertise_from_query")
 
     save_status = @teacher.save
@@ -33,7 +36,7 @@ class TeachersController < ApplicationController
     if save_status == true
       session.store(:teacher_id,  @teacher.id)
    
-      redirect_to("/", { :notice => "Teacher account created successfully."})
+      redirect_to("/teachers/#{@teacher.id}", { :notice => "Teacher account created successfully."})
     else
       redirect_to("/teacher_sign_up", { :alert => "Teacher account failed to create successfully."})
     end
@@ -49,13 +52,15 @@ class TeachersController < ApplicationController
     @teacher.password = params.fetch("password_from_query")
     @teacher.password_confirmation = params.fetch("password_confirmation_from_query")
     @teacher.name = params.fetch("name_from_query")
-    @teacher.schedule = params.fetch("schedule_from_query")
+    schedule_from_query = params.fetch("schedule_from_query1","") +" "+ params.fetch("schedule_from_query2","") +" "+ params.fetch("schedule_from_query3","") +" "+ params.fetch("schedule_from_query4","") +" "+ params.fetch("schedule_from_query5","")
+    @teacher.schedule = schedule_from_query
+    #@teacher.schedule = params.fetch("schedule_from_query")
     @teacher.expertise = params.fetch("expertise_from_query")
     
     if @teacher.valid?
       @teacher.save
 
-      redirect_to("/", { :notice => "Teacher account updated successfully."})
+      redirect_to("/teachers/#{@teacher.id}", { :notice => "Teacher account updated successfully."})
     else
       render({ :template => "teachers/edit_profile_with_errors.html.erb" })
     end

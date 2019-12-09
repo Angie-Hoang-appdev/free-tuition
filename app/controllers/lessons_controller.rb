@@ -3,12 +3,14 @@ class LessonsController < ApplicationController
     @lessons = Lesson.all.order({ :created_at => :desc })
     @students = Student.all
     @teachers = Teacher.all
+    
     render({ :template => "lessons/index.html.erb" })
   end
 
   def show
     the_id = params.fetch("id_from_path")
     @lesson = Lesson.where({:id => the_id }).at(0)
+    @teachers = Teacher.all
 
     render({ :template => "lessons/show.html.erb" })
   end
@@ -33,7 +35,7 @@ class LessonsController < ApplicationController
 
     if @lesson.valid?
       @lesson.save
-      redirect_to("/lessons", { :notice => "Lesson created successfully." })
+      redirect_to("/lessons/", { :notice => "Lesson created successfully." })
     else
       redirect_to("/lessons", { :notice => "Lesson failed to create successfully." })
     end

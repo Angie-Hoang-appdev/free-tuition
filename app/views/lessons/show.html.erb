@@ -11,28 +11,33 @@
         </a>
       </div>
 
-      <div class="col">
-        <a href="/delete_lesson/<%= @lesson.id %>" class="btn btn-block btn-outline-secondary">
-          Delete lesson
-        </a>
-      </div>
-    </div>
-
+    <%if @current_student != nil && @lesson.student_id == @current_student.id %>      
+          <div class="col">
+            <a href="/delete_lesson/<%= @lesson.id %>" class="btn btn-block btn-outline-secondary">
+              Delete lesson
+            </a>
+          </div>
+        </div>
+    <%end%>
     <dl>
       <dt>
         Teacher
       </dt>
       <dd>
-        <a href="/teachers/<%= @lesson.teacher_id %>">
+        <a href="/teachers/<%= @lesson.teacher_id %>"> 
         <%= @lesson.teacher %>
+        </a>
+        
       </dd>
 
       <dt>
-        <a href="/students/<%= @lesson.student_id %>">
         Student
       </dt>
+
       <dd>
+        <a href="/students/<%= @lesson.student_id %>">
         <%= @lesson.student %>
+        </a>
       </dd>
 
       <dt>
@@ -68,43 +73,50 @@
 
 <hr>
 
+<%if @current_student != nil && @lesson.student_id == @current_student.id %>
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+      <h2>
+        Edit lesson
+      </h2>
 
-<div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
-    <h2>
-      Edit lesson
-    </h2>
+      <form action="/modify_lesson/<%= @lesson.id %>"  method="post" >
+        <div class="form-group">
+          <label for="teacher_id_box">
+            Teacher
+          </label>
+            <select id="teacher_id_box" name="teacher_id_from_query">
+              <option value="<%=@lesson.teacher_id%>" selected><%=@lesson.teacher %></option>          
+              <% @teachers.each do |teacher| %>
+  
+                <option value="<%=teacher.id%>"><%=teacher.name %></option>
+              <% end %>
+            </select>
+          
+        </div>
 
-    <form action="/modify_lesson/<%= @lesson.id %>"  method="post" >
-      <div class="form-group">
-        <label for="teacher_id_box">
-          Teacher
-        </label>
+        <div class="form-group">
+          <label for="student_id_box">
+            Student
+          </label>
 
-        <input type="text" id="teacher_id_box" name="teacher_id_from_query" class="form-control" value="<%= @lesson.teacher_id %>">
-      </div>
+          <input type="text" id="student_id_box" name="student_id_from_query" class="form-control" value="<%= @lesson.student_id %>">
+        </div>
 
-      <div class="form-group">
-        <label for="student_id_box">
-          Student
-        </label>
+        <div class="form-group">
+          <label for="feedback_box">
+            Feedback
+          </label>
 
-        <input type="text" id="student_id_box" name="student_id_from_query" class="form-control" value="<%= @lesson.student_id %>">
-      </div>
+          <input type="text" id="feedback_box" name="feedback_from_query" class="form-control" value="<%= @lesson.feedback %>">
+        </div>
 
-      <div class="form-group">
-        <label for="feedback_box">
-          Feedback
-        </label>
-
-        <input type="text" id="feedback_box" name="feedback_from_query" class="form-control" value="<%= @lesson.feedback %>">
-      </div>
-
-      <button class="btn btn-block btn-outline-secondary">
-        Update lesson
-      </button>
-    </form>
+        <button class="btn btn-block btn-outline-secondary">
+          Update lesson
+        </button>
+      </form>
+    </div>
   </div>
-</div>
+<%end%>
 
 <hr>

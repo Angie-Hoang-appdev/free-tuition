@@ -20,7 +20,7 @@ class TeacherSessionsController < ApplicationController
       else
         session.store(:teacher_id, teacher.id)
       
-        redirect_to("/", { :notice => "Signed in successfully." })
+        redirect_to("/teachers/#{teacher.id}", { :notice => "Signed in successfully." })
       end
     else
       redirect_to("/teacher_sign_in", { :alert => "There's no teacher account with that email address." })

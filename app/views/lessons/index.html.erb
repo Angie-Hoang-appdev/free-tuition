@@ -8,7 +8,7 @@
 
 <hr>
 
-
+<% if @current_student != nil %>
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <h2>
@@ -16,21 +16,7 @@
     </h2>
     
     <form action="/insert_lesson" method="post">
-      <% if @current_student == nil %>
-      <div class="form-group">
-        <label for="student_id_box">
-          Student
-        </label>
-          <select id="student_id_box" name="student_id_from_query">
-            <% @students.each do |student| %>
-              
-              <option value="<%=student.id%>"><%=student.name %></option>
-            <% end %>
-          </select>    
-      </div>
-      <%end%>
 
-      <% if @current_teacher == nil %>
       <div class="form-group">
         <label for="teacher_id_box">
           Teacher
@@ -42,8 +28,6 @@
             <% end %>
           </select>
       </div>
-
-      <%end%>
 
       <div class="form-group">
         <label for="feedback_box">
@@ -72,6 +56,7 @@
     </form>
   </div>
 </div>
+<% end %>
 
 <hr>
 <div class="row mb-3">

@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
   skip_before_action(:force_teacher_sign_in)
 
   def index
-    @students = Student.all
+    @students = Student.all.order({ :name => :asc })
     render({ :template => "students/all_students.html.erb"})
   end
 
@@ -12,6 +12,7 @@ class StudentsController < ApplicationController
     student_id = params.fetch("the_student_id")
     @student = Student.where({:id => student_id }).first
     @lessons_of_student = Lesson.where({:student_id => student_id })
+    @teachers = Teacher.all
     render({:template => "students/details.html.erb"})
   end
 
@@ -32,7 +33,7 @@ class StudentsController < ApplicationController
     if save_status == true
       session.store(:student_id,  @student.id)
    
-      redirect_to("/", { :notice => "Student account created successfully."})
+      redirect_to("/students/#{@student.id}", { :notice => "Student account created successfully."})
     else
       redirect_to("/student_sign_up", { :alert => "Student account failed to create successfully."})
     end
@@ -53,7 +54,7 @@ class StudentsController < ApplicationController
     if @student.valid?
       @student.save
 
-      redirect_to("/", { :notice => "Student account updated successfully."})
+      redirect_to("/students/#{@student.id}",  { :notice => "Student account updated successfully."})
     else
       render({ :template => "students/edit_profile_with_errors.html.erb" })
     end
