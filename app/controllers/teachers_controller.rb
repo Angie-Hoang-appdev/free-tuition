@@ -4,8 +4,14 @@ class TeachersController < ApplicationController
   skip_before_action(:force_student_sign_in)
 
   def index
-    @teachers = Teacher.all.order({ :average_rating => :desc })
+    #@teachers = Teacher.all.order({ :average_rating => :desc })
 
+    @teachers = Teacher.all
+    @teachers.each do |teacher|
+        teacher.rating = teacher.average_rating
+        teacher.save
+    end 
+    @teachers = Teacher.all.order({ :rating => :desc })
     render({ :template => "teachers/all_teachers.html.erb"})
   end
 

@@ -30,5 +30,9 @@ class Teacher < ApplicationRecord
       return (total/count).round(2)
     end
   end
+
+  #Teacher.each do |teacher|
+  #  teacher.rating = teacher.average_rating
+  #end 
 end
 
