@@ -29,9 +29,27 @@
                       
       <div>
         <label for="grade_box">Grade</label>
+          <select id="grade_box" name="grade_from_query">
+            <option value="<%@student.grade%>"><%=@student.grade%></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
           
-        <input id="grade_box" name="grade_from_query" value="<%= @current_student.grade %>">
-          
+      </div>
+
+      <div>
+        <label for="image_box">Image</label>          
+        <input type="text" id="image_box" name="image_from_query" value="<%= @current_student.image %>">
       </div>
               
       <div>

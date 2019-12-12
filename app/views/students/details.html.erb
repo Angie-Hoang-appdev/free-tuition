@@ -1,10 +1,12 @@
 <h1><%= @student.name %></h1>
 
 <dl>
+  <img width="200" src="<%= @student.image %>">
+  
   <dt>Email: <%= @student.email %></dt>
   
   <dt>Grade: <%= @student.grade %></dt>
-  
+
   <%if @student.id == @current_student.id %>
     <dt> <a href="/edit_student">
           Edit Student Details

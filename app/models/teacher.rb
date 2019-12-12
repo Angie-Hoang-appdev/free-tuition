@@ -3,8 +3,10 @@
 # Table name: teachers
 #
 #  id              :integer          not null, primary key
+#  bio             :text
 #  email           :string
 #  expertise       :string
+#  image           :string
 #  name            :string
 #  password_digest :string
 #  rating          :string

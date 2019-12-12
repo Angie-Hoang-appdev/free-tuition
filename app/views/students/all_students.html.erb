@@ -4,6 +4,7 @@
 <table border="1">
   <tr>
     <th>Name</th>
+    <th>Photo</th>
     <th>Email</th>
     <th>Grade</th>
     <th></th>
@@ -15,6 +16,14 @@
     <td>
       <a href="/students/<%= student.id %>">
       <%= student.name %>
+    </td>
+
+    <td>
+    <%if student.image != nil && student.image != ""%>
+    <img height="100" src="<%= student.image %>">
+    <%else%>
+    No Image Available
+    <%end%>
     </td>
 
     <td>

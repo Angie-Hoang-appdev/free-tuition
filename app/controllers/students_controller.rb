@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
     @student.password_confirmation = params.fetch("password_confirmation_from_query")
     @student.name = params.fetch("name_from_query")
     @student.grade = params.fetch("grade_from_query")
+    @student.image = params.fetch("image_from_query",nil)
 
     save_status = @student.save
 
@@ -50,6 +51,7 @@ class StudentsController < ApplicationController
     @student.password_confirmation = params.fetch("password_confirmation_from_query")
     @student.name = params.fetch("name_from_query")
     @student.grade = params.fetch("grade_from_query")
+    @student.image = params.fetch("image_from_query",nil)
     
     if @student.valid?
       @student.save
