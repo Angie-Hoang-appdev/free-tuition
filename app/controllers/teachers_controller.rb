@@ -4,7 +4,6 @@ class TeachersController < ApplicationController
   skip_before_action(:force_student_sign_in)
 
   def index
-    #@teachers = Teacher.all.order({ :average_rating => :desc })
 
     @teachers = Teacher.all
     @teachers.each do |teacher|
@@ -33,8 +32,9 @@ class TeachersController < ApplicationController
     @teacher.password_confirmation = params.fetch("password_confirmation_from_query")
     @teacher.name = params.fetch("name_from_query")
     schedule_from_query = params.fetch("schedule_from_query1","") +" "+ params.fetch("schedule_from_query2","") +" "+ params.fetch("schedule_from_query3","") +" "+ params.fetch("schedule_from_query4","") +" "+ params.fetch("schedule_from_query5","")
+
     @teacher.schedule = schedule_from_query
-    #@teacher.schedule = params.fetch("schedule_from_query")
+
     @teacher.expertise = params.fetch("expertise_from_query")
     @teacher.image = params.fetch("image_from_query",nil)
     @teacher.bio = params.fetch("bio_from_query",nil)
@@ -61,8 +61,10 @@ class TeachersController < ApplicationController
     @teacher.password_confirmation = params.fetch("password_confirmation_from_query")
     @teacher.name = params.fetch("name_from_query")
     schedule_from_query = params.fetch("schedule_from_query1","") +" "+ params.fetch("schedule_from_query2","") +" "+ params.fetch("schedule_from_query3","") +" "+ params.fetch("schedule_from_query4","") +" "+ params.fetch("schedule_from_query5","")
+    
+    if schedule_from_query != "    " && schedule_from_query != nil
     @teacher.schedule = schedule_from_query
-    #@teacher.schedule = params.fetch("schedule_from_query")
+    end
     @teacher.expertise = params.fetch("expertise_from_query")
     @teacher.image = params.fetch("image_from_query",nil)
     @teacher.bio = params.fetch("bio_from_query",nil)

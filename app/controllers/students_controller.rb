@@ -65,7 +65,6 @@ class StudentsController < ApplicationController
   def destroy
     @current_student.destroy
     reset_session
-    
     redirect_to("/", { :notice => "Student account cancelled" })
   end
   

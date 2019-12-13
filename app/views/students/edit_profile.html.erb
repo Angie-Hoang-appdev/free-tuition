@@ -2,7 +2,12 @@
   <h5>
     Edit Student Account
   </h5>
-
+          <div class="col">
+            <a href="/cancel_student_account" class="btn btn-block btn-outline-secondary">
+              Delete Student account
+            </a>
+          </div>
+          
   <div>
     <form action="/patch_student" method="post">
       <div>
@@ -16,7 +21,7 @@
       <div>
         <label for="grade_box">Grade</label>
           <select id="grade_box" name="grade_from_query">
-            <option value="<%@current_student.grade%>"><%=@current_student.grade%></option>
+            <option value="<%=@current_student.grade%>"><%=@current_student.grade%></option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -34,7 +39,7 @@
 
       <div>
         <label for="image_box">Image</label>          
-        <input type="text" id="image_box" name="image_from_query" value="<%= @current_student.image %>">
+        <input type="text" id="image_box" name="image_from_query" value="<%= @current_student.image %>" placeholder= "Paste image URL">
       </div>
       
       <div>

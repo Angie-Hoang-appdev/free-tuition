@@ -3,18 +3,30 @@
 <form action="/post_teacher" method="post">
 
   <div>
-    <label for="email_box">Email</label>
+    <label for="email_box">Email*</label>
     <input id="email_box" name="email_from_query" placeholder="Choose a email..." type="text">
   </div>
                  
   <div>
-    <label for="name_box">Name</label>
+    <label for="name_box">Name*</label>
       
     <input type="text" id="name_box" name="name_from_query">
   </div>
-         
+
   <div>
-    <label for="schedule_box">Schedule</label>
+    <label for="bio_box">Bio</label>
+      
+    <textarea id="bio_box" name="bio_from_query" rows="10" cols="30" placeholder ="Describe a bit about yourself"></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">Image</label>
+      
+    <input type="text" id="image_box" name="image_from_query" placeholder = "Paste image URL">
+  </div>
+
+  <div>
+    <label for="schedule_box">Available Schedule*</label>
         <label for="mon">Mon</label>
         <input id="mon" name="schedule_from_query1" type="checkbox" value="Mon">
 
@@ -34,21 +46,25 @@
   </div>
          
   <div>
-    <label for="expertise_box">Expertise</label>
+    <label for="expertise_box">Expertise*</label>
       
-    <input type="text" id="expertise_box" name="expertise_from_query">
+    <input type="text" id="expertise_box" name="expertise_from_query" placeholder="Programming, Finance, Econ, etc.">
   </div>
     
   <div>
-    <label for="password_box">Password</label>
+    <label for="password_box">Password*</label>
     <input id="password_box" name="password_from_query" placeholder="Choose a password..." type="password">
   </div>
 
   <div>
-    <label for="password_confirmation_box">Password Confirmation</label>
+    <label for="password_confirmation_box">Password Confirmation*</label>
     <input id="password_confirmation_box" name="password_confirmation_from_query" placeholder="Confirm your password..." type="password">
   </div>
 
+  <div>
+    <label >Fields with * are compulsory*</label>
+  </div>
+  
   <button>
     Sign up
   </button>

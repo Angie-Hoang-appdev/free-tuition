@@ -44,10 +44,17 @@ class LessonsController < ApplicationController
   def update
     the_id = params.fetch("id_from_path")
     @lesson = Lesson.where({ :id => the_id }).at(0)
-
-    @lesson.teacher_id = params.fetch("teacher_id_from_query")
-    @lesson.student_id = session[:student_id]
-    @lesson.feedback = params.fetch("feedback_from_query")
+    
+    if session[:student_id] != nil
+      @lesson.teacher_id = params.fetch("teacher_id_from_query")
+      @lesson.feedback = params.fetch("feedback_from_query",nil)
+      @lesson.rating = params.fetch("rating_from_query")
+    end
+    
+    if session[:teacher_id] != nil
+      @lesson.teacher_id = params.fetch("teacher_id_from_query")
+      @lesson.teacher_response = params.fetch("response_from_query",nil)
+    end
 
     if @lesson.valid?
       @lesson.save

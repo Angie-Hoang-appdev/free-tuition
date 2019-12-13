@@ -3,12 +3,12 @@
 <form action="/post_student" method="post">
 
   <div>
-    <label for="email_box">Email</label>
+    <label for="email_box">Email*</label>
     <input id="email_box" name="email_from_query" placeholder="Choose a email..." type="text">
   </div>
                  
   <div>
-    <label for="name_box">Name</label>
+    <label for="name_box">Name*</label>
       
     <input type="text" id="name_box" name="name_from_query">
   </div>
@@ -16,11 +16,11 @@
   <div>
     <label for="image_box">Image</label>
       
-    <input type="text" id="image_box" name="image_from_query">
+    <input type="text" id="image_box" name="image_from_query" placeholder = "Paste image URL">
   </div>
          
   <div>
-    <label for="grade_box">Grade</label>
+    <label for="grade_box">Grade*</label>
         <select id="grade_box" name="grade_from_query">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -38,13 +38,17 @@
   </div>
     
   <div>
-    <label for="password_box">Password</label>
+    <label for="password_box">Password*</label>
     <input id="password_box" name="password_from_query" placeholder="Choose a password..." type="password">
   </div>
 
   <div>
-    <label for="password_confirmation_box">Password Confirmation</label>
+    <label for="password_confirmation_box">Password Confirmation*</label>
     <input id="password_confirmation_box" name="password_confirmation_from_query" placeholder="Confirm your password..." type="password">
+  </div>
+
+  <div>
+    <label >Fields with * are compulsory*</label>
   </div>
 
   <button>

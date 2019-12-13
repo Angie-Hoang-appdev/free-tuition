@@ -111,7 +111,7 @@
           Rating
         </label>
           <select id="rating_box" name="rating_from_query">       
-              <option value="<%@lesson.rating%>"><%=@lesson.rating%></option>    
+              <option value="<%=@lesson.rating%>"><%=@lesson.rating%></option>    
               <option value="1"><%=1 %></option>
               <option value="2"><%=2 %></option>
               <option value="3"><%=3 %></option>
@@ -124,6 +124,44 @@
             Student Feedback
           </label>
           <input type="text" id="feedback_box" name="feedback_from_query" class="form-control" value="<%= @lesson.feedback %>">
+        </div>
+
+        <button class="btn btn-block btn-outline-secondary">
+          Update lesson
+        </button>
+      </form>
+    </div>
+  </div>
+<%end%>
+
+<%if @current_teacher != nil && @lesson.teacher_id == @current_teacher.id %>
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+      <h2>
+        Edit Teacher Response
+      </h2>
+
+      <form action="/modify_lesson/<%= @lesson.id %>"  method="post" >
+        <div class="form-group">
+          <label for="teacher_id_box">
+            Teacher
+          </label>
+            <select id="teacher_id_box" name="teacher_id_from_query">
+              <option value="<%=@lesson.teacher_id%>" selected><%=@lesson.teacher %></option>          
+              <% @teachers.each do |teacher| %>
+  
+                <option value="<%=teacher.id%>"><%=teacher.name %></option>
+              <% end %>
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="response_box">
+            Teacher Response
+          </label>
+          <input type="text" id="response_box" name="response_from_query" class="form-control" value="<%= @lesson.teacher_response %>">
         </div>
 
         <button class="btn btn-block btn-outline-secondary">
