@@ -2,13 +2,14 @@
 #
 # Table name: lessons
 #
-#  id         :integer          not null, primary key
-#  feedback   :string
-#  rating     :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  student_id :integer
-#  teacher_id :integer
+#  id               :integer          not null, primary key
+#  feedback         :string
+#  rating           :integer
+#  teacher_response :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  student_id       :integer
+#  teacher_id       :integer
 #
 
 class Lesson < ApplicationRecord

@@ -1,10 +1,13 @@
 <h1><%= @teacher.name %></h1>
 
 <dl>
+
+  <img width="200" src="<%= @teacher.image %>">
   <dt>Email: <%= @teacher.email %></dt>
 
   <dt>Expertise: <%= @teacher.expertise %>  </dt>
 
+  <dt>Bio: <%= @teacher.bio %> </dt>
   <dt>Schedule: <%= @teacher.schedule %> </dt>
 
   <dt>Average Rating: <%= @teacher.average_rating %> <dt>
@@ -84,7 +87,11 @@
         </th>
 
         <th>
-          Feedback
+          Student Feedback
+        </th>
+
+        <th>
+          Teacher's Response
         </th>
 
         <th>
@@ -124,6 +131,14 @@
         </td>
         
         <td>
+          <%if lesson.teacher_response != nil%>
+          <%= lesson.teacher_response %>
+          <%else%>
+          No response from teacher yet.
+          <%end%>
+        </td>
+
+        <td>
           <%= lesson.rating %>
         </td>
 
@@ -136,7 +151,7 @@
 
         <td>
           <a href="/lessons/<%= lesson.id %>">
-            Show details
+            Edit Teacher Response
           </a>
         </td>
       </tr>

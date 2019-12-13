@@ -46,7 +46,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.where({ :id => the_id }).at(0)
 
     @lesson.teacher_id = params.fetch("teacher_id_from_query")
-    @lesson.student_id = params.fetch("student_id_from_query")
+    @lesson.student_id = session[:student_id]
     @lesson.feedback = params.fetch("feedback_from_query")
 
     if @lesson.valid?

@@ -36,6 +36,8 @@ class TeachersController < ApplicationController
     @teacher.schedule = schedule_from_query
     #@teacher.schedule = params.fetch("schedule_from_query")
     @teacher.expertise = params.fetch("expertise_from_query")
+    @teacher.image = params.fetch("image_from_query",nil)
+    @teacher.bio = params.fetch("bio_from_query",nil)
 
     save_status = @teacher.save
 
@@ -62,6 +64,8 @@ class TeachersController < ApplicationController
     @teacher.schedule = schedule_from_query
     #@teacher.schedule = params.fetch("schedule_from_query")
     @teacher.expertise = params.fetch("expertise_from_query")
+    @teacher.image = params.fetch("image_from_query",nil)
+    @teacher.bio = params.fetch("bio_from_query",nil)
     
     if @teacher.valid?
       @teacher.save

@@ -78,7 +78,11 @@
         </th>
 
         <th>
-          Feedback
+          Student Feedback
+        </th>
+
+        <th>
+          Teacher Response
         </th>
 
         <th>
@@ -116,7 +120,15 @@
         <td>
           <%= lesson.feedback %>
         </td>
-        
+                
+        <td>
+          <%if lesson.teacher_response != nil%>
+          <%= lesson.teacher_response %>
+          <%else%>
+          No response from teacher yet.
+          <%end%>
+        </td>
+
         <td>
           <%= lesson.rating %>
         </td>
@@ -130,7 +142,7 @@
 
         <td>
           <a href="/lessons/<%= lesson.id %>">
-            Show details
+            Edit Lesson Feedback
           </a>
         </td>
       </tr>

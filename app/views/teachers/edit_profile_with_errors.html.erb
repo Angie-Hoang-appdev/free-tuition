@@ -26,9 +26,23 @@
         <input id="name_box" name="name_from_query" value="<%= @current_teacher.name %>">
           
       </div>
-                      
+
       <div>
-        <label for="schedule_box">Schedule</label>
+        <label for="bio_box">Bio</label>
+        <textarea id="bio_box" name="bio_from_query" rows="10" cols="30" ><%= @current_teacher.bio %></textarea>
+      </div>
+
+      <div>
+        <label for="image_box">Image</label>          
+        <input type="text" id="image_box" name="image_from_query" value="<%= @current_teacher.image %>" placeholder="Paste updated image URL here">
+      </div>
+
+      <div>
+      <label for="schedule_box"> Current Schedule <%= @current_teacher.schedule %></label>
+      </div>
+
+      <div>
+        <label for="schedule_box">Updated Schedule</label>
           <label for="mon">Mon</label>
           <input id="mon" name="schedule_from_query1" type="checkbox" value="Mon">
 
