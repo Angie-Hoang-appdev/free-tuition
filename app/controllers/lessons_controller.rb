@@ -35,7 +35,7 @@ class LessonsController < ApplicationController
 
     if @lesson.valid?
       @lesson.save
-      redirect_to("/lessons/", { :notice => "Lesson created successfully." })
+      redirect_to("/lessons/#{@lesson.id}", { :notice => "Lesson created successfully." })
     else
       redirect_to("/lessons", { :notice => "Lesson failed to create successfully." })
     end

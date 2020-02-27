@@ -15,7 +15,8 @@
 class Lesson < ApplicationRecord
   belongs_to :teacher
   belongs_to :student
-  
+  validates :feedback, :presence => true
+
   def teacher
     return Teacher.where({:id => self.teacher_id}).at(0).name
   end
